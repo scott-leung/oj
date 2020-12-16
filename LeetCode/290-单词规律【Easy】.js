@@ -23,9 +23,9 @@ var wordPattern = function (pattern, s) {
     const v = arr[i];
     if (k2v[k]) {
       if (v !== k2v[k]) return false;
-    } else {
-      if (v2k[v]) return false;
+      continue;
     }
+    if (v2k[v]) return false;
     k2v[k] = v;
     v2k[v] = k;
   }
