@@ -7,21 +7,15 @@
 var rotate = function(matrix) {
   const N = matrix.length;
   const n = N - 1;
-  let flag = new Array(N).fill(0).map(v => new Array(N).fill(0));
-
-  // console.log(matrix[0][1]);
-
-  for (let i = 0; i < N; i++) {
-    for (let j = 0; j < N; j++) {
-      if (flag[i][j]) continue;
-      // console.log(i, j, matrix[i][j]);
+  // 行里只需要保证一半即可
+  for (let i = 0, iLen = Math.floor(N / 2); i < iLen; i++) {
+    // 列只需要保证超过一半即可
+    for (let j = 0, jLen = Math.floor((N + 1) / 2); j < jLen; j++) {  
       const temp = matrix[i][j];
       matrix[i][j] = matrix[n - j][i];
       matrix[n - j][i] = matrix[n - i][n - j];
       matrix[n - i][n - j] = matrix[j][n - i];
       matrix[j][n - i] = temp;
-
-      flag[i][j] = flag[j][n - i] = flag[n - i][n - j] = flag[n - j][i] = 1;
     }
   }
 
