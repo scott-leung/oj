@@ -1,4 +1,5 @@
 // 题目链接：https://leetcode-cn.com/problems/word-pattern/submissions/
+// 类似205-同构字符串
 
 /**
  * 思路：两个hash，一个key to value，一个value to key
