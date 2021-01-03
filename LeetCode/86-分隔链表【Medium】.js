@@ -2,6 +2,9 @@
 
 const { ListNode, constructListNodeByArray, outputListNode } = require('../util');
 
+// 思路：遍历时，分小于链表和大于等于链表，最终连起来，返回即可。
+// 原地修改的，比较好。
+
 /**
  * @param {ListNode} head
  * @param {number} x
