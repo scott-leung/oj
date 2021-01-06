@@ -7,6 +7,7 @@
  * @return {string}
  */
 // var convert = function(s, numRows) {
+//   if (numRows === 1) return s;
 //   let arr = [];
 //   for (let i = 0; i < numRows; i++) {
 //     arr.push([]);
@@ -29,21 +30,42 @@
 // };
 
 // 做法二：规律
+// var convert = function(s, numRows) {
+//   if (numRows === 1) return s;
+//   let res = '';
+//   const space = (numRows - 1) * 2 || 1;
+//   for (let i = 0; i < numRows; i++) {
+//     let idx = i;
+//     let prevSpace = i * 2;
+//     while (idx < s.length) {
+//       res += s[idx];
+//       idx += space;
+//       if (i > 0 && i < numRows - 1) {
+//         res += s[idx - prevSpace] || '';
+//       }
+//     }
+//   }
+//   return res;
+// }
+
+// 做法三：简单遍历拼接
 var convert = function(s, numRows) {
-  let res = '';
-  const space = (numRows - 1) * 2 || 1;
+  if (numRows === 1) return s;
+
+  let arr = [];
   for (let i = 0; i < numRows; i++) {
-    let idx = i;
-    let prevSpace = i * 2;
-    while (idx < s.length) {
-      res += s[idx];
-      idx += space;
-      if (i > 0 && i < numRows - 1) {
-        res += s[idx - prevSpace] || '';
-      }
-    }
+    arr.push('');
   }
-  return res;
+
+  let step = -1;
+  let idx = 0;
+  for (let i = 0; i < s.length; i++) {
+    arr[idx] += s[i];
+    if (idx === 0 || idx === numRows - 1) step *= -1;
+    idx += step;
+  }
+
+  return arr.join('');
 }
 
 console.log(convert('LEETCODEISHIRING', 3));
