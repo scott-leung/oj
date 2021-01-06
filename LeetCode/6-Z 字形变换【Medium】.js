@@ -6,27 +6,45 @@
  * @param {number} numRows
  * @return {string}
  */
-var convert = function(s, numRows) {
-  let arr = [];
-  for (let i = 0; i < numRows; i++) {
-    arr.push([]);
-  }
+// var convert = function(s, numRows) {
+//   let arr = [];
+//   for (let i = 0; i < numRows; i++) {
+//     arr.push([]);
+//   }
 
-  let length = s.length;
-  let idx = 0;
-  while (idx < length) {
-    for (let i = 0; i < numRows; i++) {
-      arr[i].push(s[idx++] || '');
-    }
-    for (let i = 0; i < numRows - 2; i++) {
-      for (let j = numRows - 1; j >= 0; j--) {
-        if (i + j === numRows - 2) arr[j].push(s[idx++] || '');
-        else arr[j].push('');
+//   let length = s.length;
+//   let idx = 0;
+//   while (idx < length) {
+//     for (let i = 0; i < numRows; i++) {
+//       arr[i].push(s[idx++] || '');
+//     }
+//     for (let i = 0; i < numRows - 2; i++) {
+//       for (let j = numRows - 1; j >= 0; j--) {
+//         if (i + j === numRows - 2) arr[j].push(s[idx++] || '');
+//         else arr[j].push('');
+//       }
+//     }
+//   }
+//   return arr.map(v => v.join('')).join('');
+// };
+
+// 做法二：规律
+var convert = function(s, numRows) {
+  let res = '';
+  const space = (numRows - 1) * 2 || 1;
+  for (let i = 0; i < numRows; i++) {
+    let idx = i;
+    let prevSpace = i * 2;
+    while (idx < s.length) {
+      res += s[idx];
+      idx += space;
+      if (i > 0 && i < numRows - 1) {
+        res += s[idx - prevSpace] || '';
       }
     }
   }
-  return arr.map(v => v.join('')).join('');
-};
+  return res;
+}
 
 console.log(convert('LEETCODEISHIRING', 3));
 console.log(convert('LEETCODEISHIRING', 4));
