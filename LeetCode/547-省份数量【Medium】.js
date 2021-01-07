@@ -1,4 +1,7 @@
 // 题目链接：https://leetcode-cn.com/problems/number-of-provinces/
+// 相似题目：200
+
+// 思路：dfs污染，找到一个，记录，然后开始蔓延污染。bfs类似。
 
 /**
  * @param {number[][]} isConnected
