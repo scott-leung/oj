@@ -1,8 +1,9 @@
 class UnionFind {
-  
+
   constructor(n) {
-    this.parents = [];
-    this.ranks = [];
+    // 使用 Uint32Array 的原因是它会自动初始化数组值为0
+    this.parents = new Uint32Array(n);
+    this.ranks = new Uint32Array(n);
     while (n--) this.parents[n] = n;
   }
 
