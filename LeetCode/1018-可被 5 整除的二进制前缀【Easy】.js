@@ -10,7 +10,7 @@ var prefixesDivBy5 = function (A) {
   let length = A.length;
   let i = 0;
   while (i < length) {
-    num = (num * 2 + A[i++]) % 10;
+    num = (num * 2 + A[i++]) % 5;
     res.push(num % 5 === 0);
   }
   return res;
