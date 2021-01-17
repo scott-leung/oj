@@ -10,7 +10,7 @@ var checkStraightLine = function (coordinates) {
   const [x2, y2] = coordinates[1];
   const a = (y2 - y1);
   const b = (x2 - x1);
-  for (let i = 3; i < coordinates.length; i++) {
+  for (let i = 2; i < coordinates.length; i++) {
     const [x3, y3] = coordinates[i];
     if ((x3 - x1) * a !== (y3 - y1) * b) return false;
   }
