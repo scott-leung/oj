@@ -1,5 +1,7 @@
 // 题目链接：https://leetcode-cn.com/problems/find-pivot-index/
 
+// 思路：先把总数算出来，然后一个个数尝试去除，看之前相加的数能不能达到总数的一半，能就返回坐标
+
 /**
  * @param {number[]} nums
  * @return {number}
