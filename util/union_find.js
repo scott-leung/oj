@@ -7,6 +7,10 @@ class UnionFind {
     while (n--) this.parents[n] = n;
   }
 
+  isConnected(x, y) {
+    return this.find(x) === this.find(y);
+  }
+
   union(x, y) {
     const rootX = this.find(x);
     const rootY = this.find(y);
