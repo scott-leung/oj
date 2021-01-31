@@ -28,6 +28,14 @@ class UnionFind {
     while (x !== this.parents[x]) x = this.parents[x];
     return x;
   }
+
+  getGroupCount() {
+    let count = 0;
+    for (let i = 0; i < this.parents.length; i++) {
+      if (this.parents[i] === i) count++;
+    }
+    return count;
+  }
 }
 
 module.exports = UnionFind;
