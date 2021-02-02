@@ -7,6 +7,10 @@ class UnionFind {
     while (n--) this.parents[n] = n;
   }
 
+  isConnected(x, y) {
+    return this.find(x) === this.find(y);
+  }
+
   union(x, y) {
     const rootX = this.find(x);
     const rootY = this.find(y);
@@ -23,6 +27,14 @@ class UnionFind {
   find(x) {
     while (x !== this.parents[x]) x = this.parents[x];
     return x;
+  }
+
+  getGroupCount() {
+    let count = 0;
+    for (let i = 0; i < this.parents.length; i++) {
+      if (this.parents[i] === i) count++;
+    }
+    return count;
   }
 }
 
